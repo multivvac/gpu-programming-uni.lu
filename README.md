@@ -1,6 +1,11 @@
 # GPU Programming Course @University of Luxembourg
 
-Exercises for the course GPU Programming @University of Luxembourg
+Exercises for the course GPU Programming @University of Luxembourg.
+
+## Resources
+
+* The book "Programming massively parallel processors 4th edition" is a valuable resource.
+* The CUDA online courses with the code given on Moodle can also be helpful.
 
 ## Introduction to CUDA Programming (`1-introduction-cuda`)
 
@@ -49,6 +54,21 @@ The project description is [available here](https://github.com/ptal/gpu-programm
 * In `7-memory-transaction/exercises/grid_min_bank.cu`: Use shared memory on the example `7-memory-transaction/exercises/grid_min.cu` and find a way to avoid bank conflicts.
 * In 2D arrays, why does the width of the array should be a multiple of 32?
 * Read [this article](https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-39-parallel-prefix-sum-scan-cuda) to understand how to optimize prefix sum to avoid bank conflicts.
+
+## Matrix Representation and Graph Traversal
+
+* [⭐⭐] Program a GPU kernel converting a COO matrix into a CSR matrix (hint: use histogram and prefix sum algorithms).
+* Define the Compressed Sparse Column Format (CSC), which is similar to CSR but using column indexing.
+* Analyse and give the properties of the hybrid ELL-COO format.
+* Implement either top-down or bottom-up BFS, following the algorithms seen in class.
+* [⭐] It is possible to implement the BFS algorithms using only BLAS operations. Think about how to do it.
+* [⭐⭐] Implement it using [cuBLAS](https://docs.nvidia.com/cuda/cublas/) and compare its efficiency with the previous implementation.
+
+## CUDA Optimization
+
+* Using cooperative groups (see `grid_floyd_cooperative_group.cu`), implement the two loops of Brent-Kung prefix sum as a single kernel using grid-wide synchronization.
+* Use shared memory in the Kogge-Stone algorithm (scan-v5).
+* Use warp primitives to implement some elements of `find_repeat` in the prefix sum project.
 
 ## Acknowledgments
 
